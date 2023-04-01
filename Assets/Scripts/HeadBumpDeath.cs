@@ -6,6 +6,7 @@ public class HeadBumpDeath : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground"))
         {
+            AudioManager.Instance.PlayCrackSound();
             GameManager.Instance.GameOver();
         }
     }

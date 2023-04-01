@@ -6,6 +6,7 @@ public class EndingLevel : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayCongratsSound();
             GameManager.Instance.DoVictory();
         }
     }

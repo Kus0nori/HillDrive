@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     private float _currentPitch;
     [SerializeField] private AudioSource engineSound;
     [SerializeField] private AudioSource crackSound;
+    [SerializeField] private AudioSource congratsSound;
     [SerializeField] private float minPitch = 0.6f;
     [SerializeField] private float maxPitch = 2.5f;
     public static AudioManager Instance;
@@ -44,11 +45,17 @@ public class AudioManager : MonoBehaviour
     {
         crackSound.Play();
     }
+    
     public void ChangeEngineSound()
     {
         var horizontalInput = InputController.Instance.HorizontalInput;
         _targetPitch = horizontalInput > GasInputThreshold ? Mathf.Lerp(minPitch, maxPitch, horizontalInput) : minPitch;
         _currentPitch = Mathf.MoveTowards(_currentPitch, _targetPitch, PitchChangeSpeed * Time.deltaTime);
         engineSound.pitch = _currentPitch;
+    }
+
+    public void PlayCongratsSound()
+    {
+        congratsSound.Play();
     }
 }
